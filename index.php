@@ -39,6 +39,13 @@ if (2  == $var) {
     <button type="submit">Soumettre</button>
 </form>
 
+<?php
+$data = $_GET;
+
+$name = $data['name'] ?: '';
+echo $name;
+?>
+
 <p>Compressing objects: 100% (12/12), done.
     Writing objects: 100% (14/14), 1.85 KiB | 379.00 KiB/s, done.
     Total 14 (delta 0), reused 0 (delta 0), pack-reused 0
