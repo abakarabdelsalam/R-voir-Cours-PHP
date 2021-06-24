@@ -32,7 +32,7 @@ if (2  == $var) {
 <?php var_dump($_POST); ?>
 <?php require (new resolver(__DIR__, 'inc', 'header'))->getPath() ?>
 
-<form>
+<form method="POST">
     <input name="name" placeholder="Un nom svp" /><br><br>
     <input name="age" placeholder="Un age svp" /><br><br>
     <input name="yieu" placeholder="ce que vous voulez" /><br><br>
@@ -56,7 +56,6 @@ if ($name && $age && $yieu) {
 <p>Compressing objects: 100% (12/12), done.
     Writing objects: 100% (14/14), 1.85 KiB | 379.00 KiB/s, done.
     Total 14 (delta 0), reused 0 (delta 0), pack-reused 0
-    To https://github.com/abakarabdelsalam/R-voir-Cours-PHP.git
     * [new branch] master -> master
     PS C:\xampp\htdocs\R-voir-Cours-PHP\R-voir-Cours-PHP></p>
 <?php require (new resolver(__DIR__, 'inc', 'footer'))->getPath() ?>
