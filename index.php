@@ -32,19 +32,17 @@ if (2  == $var) {
 <?php var_dump($_POST); ?>
 <?php require (new resolver(__DIR__, 'inc', 'header'))->getPath() ?>
 
-<form method="POST">
-    <input name="name" placeholder="Un nom svp" /><br><br>
-    <input name="age" placeholder="Un age svp" /><br><br>
-    <input name="yieu" placeholder="ce que vous voulez" /><br><br>
-    <button type="submit">Soumettre</button>
-</form>
-
 <?php
-$data = $_GET;
+$data = $_POST;
+$ageError = false;
 
 $name = isset($data['name']) ? $data['name'] : '';
 $age = isset($data['age']) ? $data['age'] : '';
 $yieu = isset($data['yieu']) ? $data['yieu'] : '';
+
+if (!$age) {
+    $ageError = true;
+}
 
 
 if ($name && $age && $yieu) {
@@ -52,6 +50,18 @@ if ($name && $age && $yieu) {
     echo sprintf('<h1>%s qui a %sans et il a un des yieux %s</h1>', $name, $age, $yieu);
 }
 ?>
+
+<form method="POST">
+    <input name="name" placeholder="Un nom svp" required /><br><br>
+    <?php if ($ageError) { ?>
+    <span style="color:red">l'àge n'est pas valide</span>
+    <?php } ?> <input name="age" placeholder="Un age svp" value="<?php echo $age ?>" /><br><br>
+
+    <input name="yieu" placeholder="ce que vous voulez" /><br><br>
+    <button type="submit">Soumettre</button>
+</form>
+
+
 
 <p>Compressing objects: 100% (12/12), done.
     Writing objects: 100% (14/14), 1.85 KiB | 379.00 KiB/s, done.
