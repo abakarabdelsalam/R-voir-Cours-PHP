@@ -35,15 +35,22 @@ if (2  == $var) {
 <form>
     <input name="name" placeholder="Un nom svp" /><br><br>
     <input name="age" placeholder="Un age svp" /><br><br>
-    <input name="pat" placeholder="ce que vous voulez" /><br><br>
+    <input name="yieu" placeholder="ce que vous voulez" /><br><br>
     <button type="submit">Soumettre</button>
 </form>
 
 <?php
 $data = $_GET;
 
-$name = $data['name'] ?: '';
-echo $name;
+$name = isset($data['name']) ? $data['name'] : '';
+$age = isset($data['age']) ? $data['age'] : '';
+$yieu = isset($data['yieu']) ? $data['yieu'] : '';
+
+
+if ($name && $age && $yieu) {
+
+    echo sprintf('<h1>%s qui a %sans et il a un des yieux %s</h1>', $name, $age, $yieu);
+}
 ?>
 
 <p>Compressing objects: 100% (12/12), done.
