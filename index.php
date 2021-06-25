@@ -34,30 +34,24 @@ if (2  == $var) {
 
 <?php
 $data = $_POST;
-$ageError = false;
-
+$title = '';
 $name = isset($data['name']) ? $data['name'] : '';
 $age = isset($data['age']) ? $data['age'] : '';
 $yieu = isset($data['yieu']) ? $data['yieu'] : '';
 
-if (!$age) {
-    $ageError = true;
-}
-
-
 if ($name && $age && $yieu) {
 
-    echo sprintf('<h1>%s qui a %sans et il a un des yieux %s</h1>', $name, $age, $yieu);
+    $title = sprintf('<h1>%s qui a %sans et il a les yieux %s</h1>', $name, $age, $yieu);
 }
 ?>
-
+<?php echo $title ?>
 <form method="POST">
-    <input name="name" placeholder="Un nom svp" required /><br><br>
-    <?php if ($ageError) { ?>
-    <span style="color:red">l'àge n'est pas valide</span>
+    <input name="name" placeholder="Un nom S'il vous plait" required value="<?php echo $name ?>" /><br><br>
+    <?php if (!$age && count($_POST)) { ?>
+    <span style="color:red">veillez remplir le champ àge</span>
     <?php } ?> <input name="age" placeholder="Un age svp" value="<?php echo $age ?>" /><br><br>
 
-    <input name="yieu" placeholder="ce que vous voulez" /><br><br>
+    <input name="yieu" placeholder="ce que vous voulez" value="<?php echo $yieu ?>" /><br><br>
     <button type="submit">Soumettre</button>
 </form>
 
